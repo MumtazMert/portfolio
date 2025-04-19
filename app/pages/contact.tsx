@@ -26,8 +26,8 @@ export const Contact = () => {
                >
                   <h3 className="text-2xl font-semibold">Contact Information</h3>
                   <p className="text-slate-300">
-                     Feel free to reach out through any of the following channels. I'm always open to discussing new
-                     projects, creative ideas, or opportunities to be part of your vision.
+                     Feel free to reach out through any of the following channels. I&apos;m always open to discussing
+                     new projects, creative ideas, or opportunities to be part of your vision.
                   </p>
                   <ContactInfoList />
                   <SocialLinks />
