@@ -1,26 +1,186 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@layer base {
+   :root {
+      --background: 0 0% 7%;
+      --foreground: 210 40% 98%;
+
+      --card: 0 0% 10%;
+      --card-foreground: 210 40% 98%;
+
+      --popover: 0 0% 10%;
+      --popover-foreground: 210 40% 98%;
+
+      --primary: 196 80% 40%;
+      --primary-foreground: 210 40% 98%;
+
+      --secondary: 260 60% 50%;
+      --secondary-foreground: 210 40% 98%;
+
+      --muted: 0 0% 15%;
+      --muted-foreground: 215 20% 65%;
+
+      --accent: 196 80% 40%;
+      --accent-foreground: 210 40% 98%;
+
+      --destructive: 0 62.8% 30.6%;
+      --destructive-foreground: 210 40% 98%;
+
+      --border: 0 0% 20%;
+      --input: 0 0% 20%;
+      --ring: 196 80% 40%;
+
+      --radius: 0.5rem;
+
+      --chart-1: 196 80% 40%;
+      --chart-2: 260 60% 50%;
+      --chart-3: 340 65% 60%;
+      --chart-4: 45 80% 60%;
+      --chart-5: 150 60% 50%;
+   }
+
+   .dark {
+      --background: 0 0% 7%;
+      --foreground: 210 40% 98%;
+
+      --card: 0 0% 10%;
+      --card-foreground: 210 40% 98%;
+
+      --popover: 0 0% 10%;
+      --popover-foreground: 210 40% 98%;
+
+      --primary: 196 80% 40%;
+      --primary-foreground: 210 40% 98%;
+
+      --secondary: 260 60% 50%;
+      --secondary-foreground: 210 40% 98%;
+
+      --muted: 0 0% 15%;
+      --muted-foreground: 215 20% 65%;
+
+      --accent: 196 80% 40%;
+      --accent-foreground: 210 40% 98%;
+
+      --destructive: 0 62.8% 30.6%;
+      --destructive-foreground: 210 40% 98%;
+
+      --border: 0 0% 20%;
+      --input: 0 0% 20%;
+      --ring: 196 80% 40%;
+   }
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Instead of using @apply with utility classes, use direct CSS properties */
+@layer base {
+   * {
+      @apply border-border;
+   }
+   body {
+      @apply bg-background text-foreground;
+   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.animate-gradient {
+   background-size: 400% 400%;
+   animation: gradient 8s ease infinite;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes gradient {
+   0% {
+      background-position: 0% 50%;
+   }
+   50% {
+      background-position: 100% 50%;
+   }
+   100% {
+      background-position: 0% 50%;
+   }
+}
+
+.animate-float {
+   animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+   0% {
+      transform: translateY(0px);
+   }
+   50% {
+      transform: translateY(-20px);
+   }
+   100% {
+      transform: translateY(0px);
+   }
+}
+
+.animate-pulse-slow {
+   animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+   0%,
+   100% {
+      opacity: 1;
+   }
+   50% {
+      opacity: 0.7;
+   }
+}
+
+.animate-slide-up {
+   animation: slideUp 0.8s ease-out forwards;
+   opacity: 0;
+}
+
+@keyframes slideUp {
+   from {
+      transform: translateY(50px);
+      opacity: 0;
+   }
+   to {
+      transform: translateY(0);
+      opacity: 1;
+   }
+}
+
+.stagger-animation > * {
+   opacity: 0;
+   transform: translateY(20px);
+}
+
+.stagger-animation > *:nth-child(1) {
+   animation: staggerFade 0.5s ease forwards 0.1s;
+}
+
+.stagger-animation > *:nth-child(2) {
+   animation: staggerFade 0.5s ease forwards 0.2s;
+}
+
+.stagger-animation > *:nth-child(3) {
+   animation: staggerFade 0.5s ease forwards 0.3s;
+}
+
+.stagger-animation > *:nth-child(4) {
+   animation: staggerFade 0.5s ease forwards 0.4s;
+}
+
+.stagger-animation > *:nth-child(5) {
+   animation: staggerFade 0.5s ease forwards 0.5s;
+}
+
+@keyframes staggerFade {
+   to {
+      opacity: 1;
+      transform: translateY(0);
+   }
+}
+
+.glow {
+   box-shadow: 0 0 15px rgba(0, 195, 255, 0.5);
+}
+
+.text-glow {
+   text-shadow: 0 0 10px rgba(0, 195, 255, 0.7);
 }

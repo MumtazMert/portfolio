@@ -1,96 +1,46 @@
-"use client"
+'use client';
 
-import { useState, useEffect } from "react"
-import Link from "next/link"
-import { Menu, X } from "lucide-react"
-import { motion, AnimatePresence } from "framer-motion"
+import { useState, useEffect } from 'react';
+import { Logo } from './logo';
+import { MobileMenu } from './mobile-menu';
+import { NavLinks } from './nav-links';
+import { NavLink } from './types/types';
 
-export function Navbar() {
-    const [isOpen, setIsOpen] = useState(false)
-    const [scrolled, setScrolled] = useState(false)
+export const Navbar = () => {
+   const [isOpen, setIsOpen] = useState(false);
+   const [scrolled, setScrolled] = useState(false);
 
-    useEffect(() => {
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 10)
-        }
+   const navLinks: NavLink[] = [
+      { href: '#home', label: 'Home' },
+      { href: '#about', label: 'About' },
+      { href: '#skills', label: 'Skills' },
+      { href: '#projects', label: 'Projects' },
+      { href: '#ai-projects', label: 'AI Projects' },
+      { href: '#contact', label: 'Contact' },
+   ];
 
-        window.addEventListener("scroll", handleScroll)
-        return () => window.removeEventListener("scroll", handleScroll)
-    }, [])
+   useEffect(() => {
+      const handleScroll = () => {
+         setScrolled(window.scrollY > 10);
+      };
 
-    const navLinks = [
-        { href: "#home", label: "Home" },
-        { href: "#about", label: "About" },
-        { href: "#skills", label: "Skills" },
-        { href: "#projects", label: "Projects" },
-        { href: "#ai-projects", label: "AI Projects" },
-        { href: "#contact", label: "Contact" },
-    ]
+      window.addEventListener('scroll', handleScroll);
+      return () => window.removeEventListener('scroll', handleScroll);
+   }, []);
 
-    return (
-        <header
-            className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-                scrolled ? "bg-[#121212]/90 backdrop-blur-md shadow-md" : "bg-transparent"
-            }`}
-        >
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex items-center justify-between h-16">
-                    <Link href="/" className="text-2xl font-bold text-primary text-glow">
-                        Portfolio
-                    </Link>
-
-                    {/* Desktop Navigation */}
-                    <nav className="hidden md:block">
-                        <ul className="flex space-x-8">
-                            {navLinks.map((link) => (
-                                <li key={link.href}>
-                                    <Link href={link.href} className="text-slate-300 hover:text-primary transition-colors duration-300">
-                                        {link.label}
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </nav>
-
-                    {/* Mobile Menu Button */}
-                    <button
-                        className="md:hidden text-slate-300 hover:text-primary"
-                        onClick={() => setIsOpen(!isOpen)}
-                        aria-label={isOpen ? "Close menu" : "Open menu"}
-                    >
-                        {isOpen ? <X size={24} /> : <Menu size={24} />}
-                    </button>
-                </div>
+   return (
+      <header
+         className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+            scrolled ? 'bg-[#121212]/90 backdrop-blur-md shadow-md' : 'bg-transparent'
+         }`}
+      >
+         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center justify-between h-16">
+               <Logo />
+               <NavLinks links={navLinks} />
+               <MobileMenu isOpen={isOpen} setIsOpen={setIsOpen} links={navLinks} />
             </div>
-
-            {/* Mobile Navigation */}
-            <AnimatePresence>
-                {isOpen && (
-                    <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="md:hidden bg-[#121212]/95 backdrop-blur-md"
-                    >
-                        <nav className="container mx-auto px-4 py-4">
-                            <ul className="flex flex-col space-y-4">
-                                {navLinks.map((link) => (
-                                    <li key={link.href}>
-                                        <Link
-                                            href={link.href}
-                                            className="block text-slate-300 hover:text-primary transition-colors duration-300"
-                                            onClick={() => setIsOpen(false)}
-                                        >
-                                            {link.label}
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
-                        </nav>
-                    </motion.div>
-                )}
-            </AnimatePresence>
-        </header>
-    )
-}
+         </div>
+      </header>
+   );
+};
