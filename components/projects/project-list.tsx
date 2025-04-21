@@ -6,7 +6,7 @@ export const ProjectList = () => {
       {
          title: 'Word Game',
          description: 'An online word game with sequential play, using Supabase as the database.',
-         image: '/placeholder.svg?height=400&width=600',
+         image: '/oynama-ulen.png',
          tags: ['React', 'TypeScript', 'Vite', 'Supabase'],
          liveUrl: 'https://oynama-ulen2.vercel.app/',
          githubUrl: 'https://github.com/MumtazMert/OynamaUlen2',
