@@ -17,7 +17,7 @@ export const AboutImage = () => {
             <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-secondary/30 rounded-2xl transform rotate-3 scale-105"></div>
             <div className="absolute inset-0 bg-[#151515] rounded-2xl overflow-hidden">
                <Image
-                  src="/placeholder.svg?height=600&width=600"
+                  src="/PP.png"
                   alt="Developer Portrait"
                   width={600}
                   height={600}
