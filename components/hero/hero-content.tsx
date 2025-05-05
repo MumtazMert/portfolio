@@ -15,7 +15,7 @@ export const HeroContent = () => {
                className="mb-6"
             >
                <span className="inline-block px-3 py-1 bg-primary/20 text-primary rounded-full text-sm font-medium mb-4">
-                  Frontend Developer
+                  Fullstack Developer
                </span>
             </MotionWrapper>
 
