@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Logo } from './logo';
 import { MobileMenu } from './mobile-menu';
 import { NavLinks } from './nav-links';
@@ -17,6 +17,7 @@ export const Navbar = () => {
       { href: '#projects', label: 'Projects' },
       { href: '#ai-projects', label: 'AI Projects' },
       { href: '#contact', label: 'Contact' },
+      { href: 'https://blog-v2-jet-one.vercel.app/', label: 'Blog' },
    ];
 
    useEffect(() => {
